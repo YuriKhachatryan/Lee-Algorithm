@@ -1,27 +1,42 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { HOME_PAGE, LABERINT_PAGE } from "../constants";
+import { HOME_PAGE, USER_DATA } from "../constants";
 
-import HomePage from "../components/home/Home";
-import LaberintPage from "../components/laberintPage/LaberintPage";
+import SignIn from "../components/home/SignIn";
+import UserData from "../components/UserData/UserData";
+import { useSelector } from "react-redux";
+import { isAuthSelector } from "../store/signin-selector";
 
-const routesPage = [
+const allRoutes = [
   {
-    path: HOME_PAGE,
-    element: <HomePage />,
+    path: USER_DATA,
+    element: <UserData />,
   },
   {
-    path: LABERINT_PAGE,
-    element: <LaberintPage />,
+    path: HOME_PAGE,
+    element: <SignIn />,
+  },
+];
+
+const publicRoutes = [
+  {
+    path: HOME_PAGE,
+    element: <SignIn />,
   },
 ];
 
 const AppRoutes: React.FC = () => {
+  const isAuth = useSelector(isAuthSelector);
+
   return (
     <Routes>
-      {routesPage.map(({ path, element }) => (
-        <Route key={path} path={path} element={element} />
-      ))}
+      {isAuth
+        ? allRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))
+        : publicRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
       <Route path="*" element={<Navigate to={HOME_PAGE} />} />
     </Routes>
   );

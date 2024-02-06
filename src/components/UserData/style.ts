@@ -1,4 +1,4 @@
-export const laberintPageStyle = {
+export const userDataStyle = {
   boxStyles: {
     sx: {
       display: "flex",
@@ -13,6 +13,7 @@ export const laberintPageStyle = {
       flexDirection: "column",
       gap: "16px",
       backgroundColor: "#000",
+      padding: "32px",
     },
   },
   paperStyles: {

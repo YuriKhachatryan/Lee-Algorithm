@@ -4,13 +4,17 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "../../styles/componentsStyles";
 import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "../../routes/Routes";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <AppRoutes />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </Provider>
     </ThemeProvider>
   );
 };

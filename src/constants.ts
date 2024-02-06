@@ -1,4 +1,4 @@
 const HOME_PAGE = "/";
-const LABERINT_PAGE = "/laberint";
+const USER_DATA = "/userData";
 
-export { HOME_PAGE, LABERINT_PAGE };
+export { HOME_PAGE, USER_DATA };

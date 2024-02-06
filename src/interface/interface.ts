@@ -6,9 +6,8 @@ interface INfButton {
 }
 
 interface IInputField {
-  label: string;
-  value: number;
-  handleChange: (value: number, name: string) => void;
+  value: string;
+  handleChange: (value: string, name: string) => void;
   type: string;
   name: string;
 }
