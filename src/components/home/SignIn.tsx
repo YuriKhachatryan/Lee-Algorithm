@@ -1,39 +1,29 @@
 import React, { FC, useState } from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Link, Typography } from "@mui/material";
 import NfButton from "../common/button/NfButton";
 import { HomeStyle } from "./style";
 import InputField from "../common/inputField/InputField";
 import { useNavigate } from "react-router-dom";
-import { USER_DATA } from "../../constants";
-import { changeIsAuth } from "../../store/signin-slice";
+import { SIGNUP, USER_DATA } from "../../constants";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import { authenticateUser } from "../../store/authSlice";
+import { AppDispatch } from "../../store/store";
 
 const { boxStyles, containerStyles } = HomeStyle;
 
 const SignIn: FC = () => {
   const [signin, setSignin] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+
   const onSignin = async () => {
-    try {
-      const response = await axios("http://localhost:3001/user");
+    await dispatch(
+      authenticateUser({ username: signin.email, password: signin.password })
+    );
 
-      const user = response.data.find(
-        (u: { email: string; password: string }) =>
-          u.email === signin.email && u.password === signin.password
-      );
-
-      if (user) {
-        dispatch(changeIsAuth());
-        navigate(USER_DATA);
-      } else {
-        console.log("Invalid credentials");
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
+    navigate(USER_DATA);
   };
+
   const handleChange = (value: string, name: string) => {
     if (name === "email") {
       setSignin((prevSignin) => ({ ...prevSignin, email: value }));
@@ -41,6 +31,7 @@ const SignIn: FC = () => {
       setSignin((prevSignin) => ({ ...prevSignin, password: value }));
     }
   };
+
   return (
     <Container {...containerStyles}>
       <Box sx={{ background: "#f2f2f2", borderRadius: "32px" }}>
@@ -60,6 +51,8 @@ const SignIn: FC = () => {
             type="password"
             name="password"
           />
+
+          <Link href={SIGNUP}>Don't have an account?</Link>
           <NfButton
             onClick={onSignin}
             title="SignIn"

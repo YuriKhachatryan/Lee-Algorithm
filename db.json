@@ -1,3 +1,20 @@
 {
-  "user": [{ "id": "1", "email": "yuri", "password": "123456789" }]
+  "users": [
+    {
+      "email": "yuri123123",
+      "firstName": "yuri12",
+      "lastName": "456",
+      "age": "12",
+      "password": "123456",
+      "id": "7e5a"
+    },
+    {
+      "id": "c286",
+      "email": "vigen@nufarmtech.comsss",
+      "firstName": "sfdsf",
+      "lastName": "sdfsdf",
+      "age": "12",
+      "password": "123"
+    }
+  ]
 }

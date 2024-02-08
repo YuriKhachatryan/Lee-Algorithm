@@ -1,4 +1,7 @@
 const HOME_PAGE = "/";
-const USER_DATA = "/userData";
+const USER_DATA = "/user-data";
+const SIGNUP = "/signup";
 
-export { HOME_PAGE, USER_DATA };
+const API_ENDPOINT = "http://localhost:3001";
+
+export { HOME_PAGE, USER_DATA, SIGNUP, API_ENDPOINT };

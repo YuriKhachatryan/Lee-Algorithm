@@ -21,7 +21,7 @@ export const theme = createTheme({
           letterSpacing: "0.1px",
           borderRadius: "5px",
           border: "1px solid #79747E",
-          color: "#fff",
+          color: "#000",
           "&:hover": {
             backgroundColor: "#000",
             color: "#fff",
@@ -83,6 +83,14 @@ export const theme = createTheme({
           color: "#707070",
         },
         root: { fontFamily: "Mardoto" },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: "#000",
+          fontSize: "16px",
+        },
       },
     },
   },

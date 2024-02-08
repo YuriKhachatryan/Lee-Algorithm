@@ -18,4 +18,16 @@ interface Address {
   numbeOfSteps: number;
 }
 
+interface AuthState {
+  isAuthenticated: boolean;
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: AuthState = {
+  isAuthenticated: false,
+  loading: false,
+  error: null,
+};
+
 export type { INfButton, IInputField, Address };
